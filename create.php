@@ -7,7 +7,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $valor = $_POST["valor"];
     $categoria_id = $_POST["categoria_id"];
 
-    $stmt = $pdo->prepare("INSERT INTO produto (nome, quantidade, valor, categoria_id) VALUES (:nome. :quatidade, :valor, :categoria_id)");
+    $stmt = $pdo->prepare("INSERT INTO produto (nome, quantidade, valor, categoria_id) VALUES (:nome, :quantidade, :valor, :categoria_id)");
     $stmt->bindValue(":nome", $nome);
     $stmt->bindValue(":quantidade", $quantidade);
     $stmt->bindValue(":valor", $valor);
@@ -27,6 +27,7 @@ $categorias = $q->fetchAll(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="create.css">
     <title>Adicionar Produto</title>
 </head>
 <body>

@@ -20,10 +20,16 @@ $pdo->exec("CREATE TABLE IF NOT EXISTS produto (
         FOREIGN KEY (categoria_id) REFERENCES categoria(id)
 );");
 
-$categorias = ["Prego", "Martelo", "Madeira"];
-$stmt = $pdo->prepare("INSERT INTO categoria (nome) VALUES (:nome)");
 
-foreach ($categorias as $categoria){
-    $stmt->bindValue(":nome", $categoria);
-    $stmt->execute();
-}
+//Função para adicionar categorias:------v
+// $categorias = ["Ferramentas", "Máquinas", "Equipamentos"];
+// $stmt = $pdo->prepare("INSERT INTO categoria (nome) VALUES (:nome)");
+
+// foreach ($categorias as $categoria){
+//     $stmt->bindValue(":nome", $categoria);
+//     $stmt->execute();
+// }
+
+//Função para deletar categorias a partir do ID:-----v
+// $stmt = $pdo->prepare("DELETE FROM categoria WHERE id > :id");
+// $stmt->execute(['id' => 0]);

@@ -12,6 +12,7 @@ $produtos = $q->fetchALL(PDO::FETCH_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 <body>
@@ -31,7 +32,7 @@ $produtos = $q->fetchALL(PDO::FETCH_ASSOC);
             <td><?= $produto['id'] ?></td>
             <td><?= $produto['nome'] ?></td>
             <td><?= $produto['quantidade'] ?></td>
-            <td><?= number_format($produto['valor'], 2, ',', '.') ?></td>
+            <td>R$<?= number_format($produto['valor'], 2, ',', '.') ?></td>
             <td><?= $produto['categoria_nome'] ?></td>
             <td>
                 <a href="update.php?id=<?= $produto['id'] ?>">Editar</a>
