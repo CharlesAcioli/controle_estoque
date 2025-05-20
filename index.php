@@ -1,8 +1,14 @@
 <?php
 include_once("conexao.php");
 
-$q = $pdo->query("SELECT produto.*, categoria.nome AS categoria_nome FROM produto
-                JOIN categoria ON produto.categoria_id = categoria.id");
+$ordem = isset($_GET['ordem']) && strtoupper($_GET['ordem']) === 'DESC' ? 'DESC' : 'ASC';
+
+$nova_ordem = $ordem === 'ASC' ? 'DESC' : 'ASC';
+
+$q = $pdo->query("SELECT produto.*, categoria.nome AS categoria_nome
+                FROM produto
+                JOIN categoria ON produto.categoria_id = categoria.id
+                ORDER BY produto.id $ordem");
 
 $produtos = $q->fetchALL(PDO::FETCH_ASSOC);
 ?>
@@ -20,7 +26,7 @@ $produtos = $q->fetchALL(PDO::FETCH_ASSOC);
     <a href="create.php">Adicionar Produto</a>
     <table border="1">
         <tr>
-            <th>ID</th>
+            <th><a href="?ordem=<?= $nova_ordem ?>">ID<?= $ordem === 'ASC' ? '↑' : '↓' ?></a></th>
             <th>Nome</th>
             <th>Quantidade</th>
             <th>Valor</th>
