@@ -26,7 +26,8 @@ $produtos = $q->fetchALL(PDO::FETCH_ASSOC);
     <a href="create.php">Adicionar Produto</a>
     <table border="1">
         <tr>
-            <th><a href="?ordem=<?= $nova_ordem ?>">ID<?= $ordem === 'ASC' ? '↑' : '↓' ?></a></th>
+            <!-- Para adiconar setas: Segurar Alt e digite 15☼/ 16►/ 17◄/ 18↕/ 19‼/ 22▬/ 23↨/ 24↑/ 25↓/ 26→/ 27←/ -->
+            <th><a href="?ordem=<?= $nova_ordem ?>">ID<?= $ordem === 'ASC' ? '↑' : '↓'?></a></th>
             <th>Nome</th>
             <th>Quantidade</th>
             <th>Valor</th>
