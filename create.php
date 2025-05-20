@@ -2,6 +2,18 @@
 include_once("conexao.php");
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+    $nova_categoria = $_POST["nova_categoria"];
+
+    if($nova_categoria !== ""){
+        $stmt = $pdo->prepare("INSERT INTO categoria (nome) VALUES (:nome)");
+        $stmt->bindValue(":nome", $nova_categoria);
+        $stmt->execute();
+    }
+    header("Location: create.php");
+    exit();
+}
+
+if($_SERVER["REQUEST_METHOD"] == "POST"){
     $nome = $_POST["nome"];
     $quantidade = $_POST["quantidade"];
     $valor = $_POST["valor"];
@@ -31,6 +43,13 @@ $categorias = $q->fetchAll(PDO::FETCH_ASSOC);
     <title>Adicionar Produto</title>
 </head>
 <body>
+    <h1>Nova Categoria</h1>
+    <form action="create.php" method="POST" style="margin-bottom: 20px;">
+        <label for="">Nova Categoria:</label>
+        <input type="text" name="nova_categoria" required>
+        <button type="submit">Salvar Categoria</button>
+    </form>
+
     <h1>Adicionar Produto</h1>
     <form action="create.php" method="POST">
         <label for="">Nome:</label>
